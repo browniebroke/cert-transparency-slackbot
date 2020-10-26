@@ -7,7 +7,10 @@ from slack import WebClient
 from . import config, fb
 
 logger = logging.getLogger()
-logging.basicConfig(level=logging.INFO)
+if logger.handlers:
+    for handler in logger.handlers:
+        logger.removeHandler(handler)
+logging.basicConfig(format="[%(levelname)s] %(message)s", level=logging.INFO)
 
 slack_client = WebClient(token=config.SLACK_API_TOKEN)
 
@@ -40,9 +43,11 @@ def verify_handler(event, context):
     logging.info("Verify handler: event=%r -- context=%r", event, context)
     query_params = event["queryStringParameters"]
     if query_params is None:
+        logging.error("No query parameters provided")
         return _make_response("No query parameters provided", 400)
     hub_challenge = query_params.get("hub.challenge", "")
     if not hub_challenge:
+        logging.error("Missing challenge in query parameters: %s", query_params)
         return _make_response("Missing challenge in query parameters", 400)
     return _make_response(hub_challenge)
 
