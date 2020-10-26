@@ -1,0 +1,21 @@
+{
+  "name": "cert-transparency-slack",
+  "description": "A Slackbot to monitor the Certificate transparency logs.",
+  "version": "1.0.0",
+  "license": "MIT",
+  "keywords": [
+    "python",
+    "aws",
+    "lambda",
+    "serverless",
+    "slack"
+  ],
+  "scripts": {
+    "deploy": "sls deploy"
+  },
+  "dependencies": {
+    "serverless": "^2.8.0",
+    "serverless-dotenv-plugin": "^3.1.0",
+    "serverless-python-requirements": "^5.1.0"
+  }
+}
