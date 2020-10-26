@@ -3556,7 +3556,7 @@ semver@^7.3.2:
   resolved "https://registry.yarnpkg.com/semver/-/semver-7.3.2.tgz#604962b052b81ed0786aae84389ffba70ffd3938"
   integrity sha512-OrOb32TeeambH6UrhtShmF7CRDqhL6/5XpPNp2DuRH6+9QLw/orhp72j87v8Qa1ScDkvrrBNpZcDejAirJmfXQ==
 
-serverless-dotenv-plugin@^3.1.0:
+serverless-dotenv-plugin@3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/serverless-dotenv-plugin/-/serverless-dotenv-plugin-3.1.0.tgz#f1482a5e69b01cc4de8c6439bdd8c134fc923534"
   integrity sha512-R9Jld4a/hDDd0lHiSq9xQuFlhtfgXqKKmODrYp7115iQ9kgf16SMxZbxJ0Cb9GqL6/4+5GlS42iHxsqv8GxZeQ==
@@ -3565,7 +3565,7 @@ serverless-dotenv-plugin@^3.1.0:
     dotenv "^8.2.0"
     dotenv-expand "^5.1.0"
 
-serverless-python-requirements@^5.1.0:
+serverless-python-requirements@5.1.0:
   version "5.1.0"
   resolved "https://registry.yarnpkg.com/serverless-python-requirements/-/serverless-python-requirements-5.1.0.tgz#5ce0ee1158429c8304a45a753100511517ea8fa9"
   integrity sha512-lJhikc6wJsOYFxYNGK763xtQITrtGPHD2KJvs8qaBkkOET4RVk8E0N3d8wAO22k+Tk7N6a6Jonnvsmo3W8vtCA==
@@ -3585,7 +3585,7 @@ serverless-python-requirements@^5.1.0:
     sha256-file "1.0.0"
     shell-quote "^1.6.1"
 
-serverless@^2.8.0:
+serverless@2.8.0:
   version "2.8.0"
   resolved "https://registry.yarnpkg.com/serverless/-/serverless-2.8.0.tgz#9f0ba9b81f5690587a7de5ab540ecf10ecdc1421"
   integrity sha512-5yG+t5SHX4vxMmllLEj6DPkP0QTuMwmYfQw7mqq8H2WPr6MOUTuksskgNhljpgEASLAeZa5HdaRQq+s+/pq17w==
