@@ -1,0 +1,21 @@
+service: serverless-ct-slack-bot
+
+provider:
+  name: aws
+  runtime: python3.8
+  profile: ${opt:profile, 'perso'}
+  region: ${opt:region, 'eu-west-2'}
+
+functions:
+  event:
+    handler: src.main.event_handler
+    events:
+      - http: POST /
+  verify:
+    handler: src.main.verify_handler
+    events:
+      - http: GET /
+
+plugins:
+  - serverless-python-requirements
+  - serverless-dotenv-plugin
