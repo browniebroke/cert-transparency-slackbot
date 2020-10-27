@@ -19,11 +19,13 @@ def event_handler(event, context):
     logging.info("Event handler: event=%r -- context=%r", event, context)
     event_body = event["body"]
     if not event_body:
+        logging.error("Body was empty")
         return _make_response("Empty body", 400)
 
     event_json = json.loads(event_body)
     if event_json.get("object") == "certificate_transparency":
         event_entries = event_json.get("entry") or []
+        logging.info("Handling certificate_transparency: %r", event_entries)
         for event_entry in event_entries:
             event_changes = event_entry.get("changes") or []
             for change in event_changes:
@@ -36,7 +38,8 @@ def event_handler(event, context):
                     )
                     return _make_response(message)
 
-    return _make_response("Invalid cert transparency event: no action taken")
+    logging.info("Missing condition in cert transparency event")
+    return _make_response("Invalid cert transparency event: no action taken", 400)
 
 
 def verify_handler(event, context):
@@ -61,7 +64,7 @@ def _make_response(content: str, status_code: int = 200) -> Dict[str, Any]:
 
 
 def _handle_cert_event(event_entry: Dict) -> bool:
-    logger.info("Received valid cert transparency event")
+    logger.info("Received valid cert transparency event: %r", event_entry)
     log_entry = _find_log_entry(event_entry["id"])
     if log_entry:
         domains = log_entry["domains"]
@@ -69,10 +72,12 @@ def _handle_cert_event(event_entry: Dict) -> bool:
         message_content = (
             f"New certificate issued for `{domains}` by `{authority_name}`"
         )
+        logger.info("Posting message to Slack: %s", message_content)
         slack_client.chat_postMessage(
             channel=config.SLACK_CHANNEL, text=message_content
         )
         return True
+    logger.info("Not matching log entry found, no message sent")
     return False
 
 
@@ -84,8 +89,12 @@ def _clean_name(issuer_name: str) -> str:
 
 def _find_log_entry(object_id: str) -> Dict[str, Any]:
     fb_client = fb.Client()
+    logger.info("Searching log entry with ID: %s", object_id)
     for domain in config.DOMAINS_LIST:
-        logs_entries = fb_client.search_logs(domain)
-        for log_entry in logs_entries:
+        logger.info("Checking domain: %s", domain)
+        log_entries = fb_client.search_logs(domain)
+        for log_entry in log_entries:
             if log_entry["id"] == object_id:
+                logger.info("Found: %s", log_entry)
                 return log_entry
+        logger.info("Nothing found...")

@@ -78,6 +78,12 @@ NOTIFICATION_EVENT = {
 
 DIGICERT_CA = "/C=US/O=DigiCert Inc/OU=www.digicert.com/CN=DigiCert CA"
 LETSENCRYPT_CA = "/C=US/O=Let's Encrypt/CN=Let's Encrypt Authority X3"
+BASE_SEARCH_PARAMS = {
+    "access_token": "12345|abcd",
+    "query": "example.com",
+    "fields": "domains,issuer_name",
+}
+SEARCH_CERT_URL = "https://graph.facebook.com/v8.0/certificates"
 
 
 def test_verify():
@@ -102,15 +108,7 @@ def test_event_empty_body():
 
 @respx.mock
 def test_event_no_certificates():
-    request = respx.get(
-        "https://graph.facebook.com/v8.0/certificates",
-        params={
-            "access_token": "12345|abcd",
-            "query": "example.com",
-            "fields": "domains,issuer_name",
-        },
-        json={"data": []},
-    )
+    request = respx.get(SEARCH_CERT_URL, params=BASE_SEARCH_PARAMS, json={"data": []})
     assert event_handler(NOTIFICATION_EVENT, None) == {
         "body": "No cert found",
         "headers": {"Content-Type": "text/plain"},
@@ -129,23 +127,16 @@ def test_event_no_certificates():
     ids=["digicert", "letsencrypt"],
 )
 def test_event_matching_result(mocked_slack, issuer_name, expected_name):
-    request = respx.get(
-        "https://graph.facebook.com/v8.0/certificates",
-        params={
-            "access_token": "12345|abcd",
-            "query": "example.com",
-            "fields": "domains,issuer_name",
-        },
-        json={
-            "data": [
-                {
-                    "domains": ["example.com"],
-                    "issuer_name": issuer_name,
-                    "id": "98467385784",
-                }
-            ]
-        },
-    )
+    exp_response = {
+        "data": [
+            {
+                "domains": ["example.com"],
+                "issuer_name": issuer_name,
+                "id": "98467385784",
+            }
+        ]
+    }
+    request = respx.get(SEARCH_CERT_URL, params=BASE_SEARCH_PARAMS, json=exp_response)
     assert event_handler(NOTIFICATION_EVENT, None) == {
         "body": "Success: received valid cert transparency event",
         "headers": {"Content-Type": "text/plain"},
@@ -155,4 +146,58 @@ def test_event_matching_result(mocked_slack, issuer_name, expected_name):
     mocked_slack.assert_called_with(
         channel="#general",
         text=f"New certificate issued for `['example.com']` by `{expected_name}`",
+    )
+
+
+@respx.mock
+def test_pagination(mocked_slack):
+    # Request for page 1: the ID we're looking for is not in it
+    request_1 = respx.get(
+        SEARCH_CERT_URL,
+        params=BASE_SEARCH_PARAMS,
+        json={
+            "data": [
+                {
+                    "domains": ["example.com"],
+                    "issuer_name": DIGICERT_CA,
+                    "id": "1111",
+                }
+            ],
+            "paging": {
+                "cursors": {"before": "cursor-1", "after": "cursor-2"},
+                "next": "https://graph.facebook.com/v8.0/certificates",
+            },
+        },
+    )
+    # Request for page 2: the one we're looking for
+    request_2 = respx.get(
+        SEARCH_CERT_URL,
+        params={
+            **BASE_SEARCH_PARAMS,
+            "after": "cursor-2",
+        },
+        json={
+            "data": [
+                {
+                    "domains": ["example.com"],
+                    "issuer_name": DIGICERT_CA,
+                    "id": "98467385784",
+                }
+            ],
+            "paging": {
+                "cursors": {"before": "cursor-2", "after": "cursor-3"},
+                "previous": "https://graph.facebook.com/v8.0/certificates",
+            },
+        },
+    )
+    assert event_handler(NOTIFICATION_EVENT, None) == {
+        "body": "Success: received valid cert transparency event",
+        "headers": {"Content-Type": "text/plain"},
+        "statusCode": 200,
+    }
+    assert request_1.called
+    assert request_2.called
+    mocked_slack.assert_called_with(
+        channel="#general",
+        text="New certificate issued for `['example.com']` by `DigiCert CA`",
     )

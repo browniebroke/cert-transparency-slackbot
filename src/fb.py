@@ -15,15 +15,19 @@ class Client:
         return response.json()
 
     def search_logs(self, query: str):
-        return self._request(
-            "GET",
-            "/certificates",
-            params={
-                "access_token": self.token,
-                "query": query,
-                "fields": "domains,issuer_name",
-            },
-        )["data"]
+        has_next = True
+        params = {
+            "access_token": self.token,
+            "query": query,
+            "fields": "domains,issuer_name",
+        }
+        while has_next:
+            response_body = self._request("GET", "/certificates", params=params)
+            yield from response_body["data"]
+            has_next = "next" in response_body.get("paging", {})
+            params["after"] = (
+                response_body.get("paging", {}).get("cursors", {}).get("after", "")
+            )
 
     def subscribe(self, domain: str):
         return self._request(
