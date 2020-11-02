@@ -3,7 +3,7 @@ import json
 import pytest
 import respx
 
-from src.main import event_handler, verify_handler
+from src.main import event_handler, sentry_cli, verify_handler
 
 
 @pytest.fixture(autouse=True)
@@ -13,6 +13,9 @@ def mocked_config(mocker):
     mocker.patch("src.config.SLACK_API_TOKEN", "ijkl")
     mocker.patch("src.config.SLACK_CHANNEL", "#general")
     mocker.patch("src.config.DOMAINS_LIST", ["example.com"])
+    # Deactivate Sentry in tests
+    mocker.patch("src.config.SENTRY_DSN", "")
+    sentry_cli.__exit__(None, None, None)
     yield mocker
 
 

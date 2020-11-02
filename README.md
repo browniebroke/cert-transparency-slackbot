@@ -98,8 +98,14 @@ poetry run subscribe.py
 
 This should print out the domains in your `.env` file as they are registered.
 
+
+### Setup Sentry (optional)
+
+To get error reports in Sentry, set the environment variable `SENTRY_DSN` [to the URL][sentry-dsn] that should be passed to `sentry_sdk.init`, it should be something like: `https://xxxxxx@yyy.ingest.sentry.io/ddddd`.
+
 [poetry]: https://python-poetry.org/
 [fb-ct-webhook]: https://developers.facebook.com/docs/certificate-transparency/#certificate-alerts
 [sls-home]: https://www.serverless.com/
 [fb-apps]: https://developers.facebook.com/apps/
 [slack-apps]: https://api.slack.com/apps/
+[sentry-dsn]: https://docs.sentry.io/platforms/python/

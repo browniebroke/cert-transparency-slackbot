@@ -2,6 +2,7 @@ import json
 import logging
 from typing import Any, Dict
 
+import sentry_sdk
 from slack import WebClient
 
 from . import config, fb
@@ -13,6 +14,8 @@ if logger.handlers:
 logging.basicConfig(format="[%(levelname)s] %(message)s", level=logging.INFO)
 
 slack_client = WebClient(token=config.SLACK_API_TOKEN)
+
+sentry_cli = sentry_sdk.init(config.SENTRY_DSN)
 
 
 def event_handler(event, context):
