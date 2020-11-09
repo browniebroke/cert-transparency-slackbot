@@ -2,6 +2,7 @@ import json
 
 import pytest
 import respx
+from respx.patterns import M
 
 from src.main import event_handler, sentry_cli, verify_handler
 
@@ -154,10 +155,9 @@ def test_event_matching_result(mocked_slack, issuer_name, expected_name):
 
 @respx.mock
 def test_pagination(mocked_slack):
+    search_route = M(method="GET") & M(url=SEARCH_CERT_URL)
     # Request for page 1: the ID we're looking for is not in it
-    request_1 = respx.get(
-        SEARCH_CERT_URL,
-        params=BASE_SEARCH_PARAMS,
+    request_1 = respx.route(search_route & M(params__eq=BASE_SEARCH_PARAMS)).respond(
         json={
             "data": [
                 {
@@ -170,15 +170,18 @@ def test_pagination(mocked_slack):
                 "cursors": {"before": "cursor-1", "after": "cursor-2"},
                 "next": "https://graph.facebook.com/v8.0/certificates",
             },
-        },
+        }
     )
     # Request for page 2: the one we're looking for
-    request_2 = respx.get(
-        SEARCH_CERT_URL,
-        params={
-            **BASE_SEARCH_PARAMS,
-            "after": "cursor-2",
-        },
+    request_2 = respx.route(
+        search_route
+        & M(
+            params__eq={
+                **BASE_SEARCH_PARAMS,
+                "after": "cursor-2",
+            }
+        )
+    ).respond(
         json={
             "data": [
                 {
@@ -191,7 +194,7 @@ def test_pagination(mocked_slack):
                 "cursors": {"before": "cursor-2", "after": "cursor-3"},
                 "previous": "https://graph.facebook.com/v8.0/certificates",
             },
-        },
+        }
     )
     assert event_handler(NOTIFICATION_EVENT, None) == {
         "body": "Success: received valid cert transparency event",
