@@ -2,6 +2,7 @@ import json
 
 import pytest
 import respx
+from respx.patterns import M
 
 from src.main import event_handler, sentry_cli, verify_handler
 
@@ -89,6 +90,18 @@ BASE_SEARCH_PARAMS = {
 SEARCH_CERT_URL = "https://graph.facebook.com/v8.0/certificates"
 
 
+def _get_search_data(id_, issuer=DIGICERT_CA, domains=None):
+    if domains is None:
+        domains = ["example.com"]
+    return [
+        {
+            "domains": domains,
+            "issuer_name": issuer,
+            "id": id_,
+        }
+    ]
+
+
 def test_verify():
     assert verify_handler(VERIFY_EVENT, None) == {
         "body": "123456",
@@ -130,15 +143,7 @@ def test_event_no_certificates():
     ids=["digicert", "letsencrypt"],
 )
 def test_event_matching_result(mocked_slack, issuer_name, expected_name):
-    exp_response = {
-        "data": [
-            {
-                "domains": ["example.com"],
-                "issuer_name": issuer_name,
-                "id": "98467385784",
-            }
-        ]
-    }
+    exp_response = {"data": _get_search_data(id_="98467385784", issuer=issuer_name)}
     request = respx.get(SEARCH_CERT_URL, params=BASE_SEARCH_PARAMS, json=exp_response)
     assert event_handler(NOTIFICATION_EVENT, None) == {
         "body": "Success: received valid cert transparency event",
@@ -154,44 +159,27 @@ def test_event_matching_result(mocked_slack, issuer_name, expected_name):
 
 @respx.mock
 def test_pagination(mocked_slack):
+    search_route = M(method="GET") & M(url=SEARCH_CERT_URL)
     # Request for page 1: the ID we're looking for is not in it
-    request_1 = respx.get(
-        SEARCH_CERT_URL,
-        params=BASE_SEARCH_PARAMS,
+    request_1 = respx.route(search_route & M(params__eq=BASE_SEARCH_PARAMS)).respond(
         json={
-            "data": [
-                {
-                    "domains": ["example.com"],
-                    "issuer_name": DIGICERT_CA,
-                    "id": "1111",
-                }
-            ],
+            "data": _get_search_data(id_="1111"),
             "paging": {
                 "cursors": {"before": "cursor-1", "after": "cursor-2"},
                 "next": "https://graph.facebook.com/v8.0/certificates",
             },
-        },
+        }
     )
     # Request for page 2: the one we're looking for
-    request_2 = respx.get(
-        SEARCH_CERT_URL,
-        params={
-            **BASE_SEARCH_PARAMS,
-            "after": "cursor-2",
-        },
+    page_2_params = M(params__eq={**BASE_SEARCH_PARAMS, "after": "cursor-2"})
+    request_2 = respx.route(search_route & page_2_params).respond(
         json={
-            "data": [
-                {
-                    "domains": ["example.com"],
-                    "issuer_name": DIGICERT_CA,
-                    "id": "98467385784",
-                }
-            ],
+            "data": _get_search_data(id_="98467385784"),
             "paging": {
                 "cursors": {"before": "cursor-2", "after": "cursor-3"},
                 "previous": "https://graph.facebook.com/v8.0/certificates",
             },
-        },
+        }
     )
     assert event_handler(NOTIFICATION_EVENT, None) == {
         "body": "Success: received valid cert transparency event",
