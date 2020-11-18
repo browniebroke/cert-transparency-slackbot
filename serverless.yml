@@ -3,7 +3,7 @@ service: serverless-ct-slack-bot
 provider:
   name: aws
   runtime: python3.8
-  profile: ${opt:profile, 'perso'}
+  profile: ${opt:profile, ''}
   region: ${opt:region, 'eu-west-2'}
 
 functions:
