@@ -98,7 +98,6 @@ poetry run subscribe.py
 
 This should print out the domains in your `.env` file as they are registered.
 
-
 ### Setup Sentry (optional)
 
 To get error reports in Sentry, set the environment variable `SENTRY_DSN` [to the URL][sentry-dsn] that should be passed to `sentry_sdk.init`, it should be something like: `https://xxxxxx@yyy.ingest.sentry.io/ddddd`.
