@@ -18,15 +18,13 @@ jobs:
       - uses: abatilo/actions-poetry@v2.1.0
 
       - name: Write .env file
-        run: env > .env
-        env:
-          # App secrets
-          SLACK_API_TOKEN: ${{ secrets.SLACK_API_TOKEN }}
-          SLACK_CHANNEL: ${{ secrets.SLACK_CHANNEL }}
-          FACEBOOK_APP_ID: ${{ secrets.FACEBOOK_APP_ID }}
-          FACEBOOK_APP_SECRET: ${{ secrets.FACEBOOK_APP_SECRET }}
-          DOMAINS_LIST: ${{ secrets.DOMAINS_LIST }}
-          SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
+        run: |
+          echo "SLACK_API_TOKEN=${{ secrets.SLACK_API_TOKEN }}
+          SLACK_CHANNEL=${{ secrets.SLACK_CHANNEL }}
+          FACEBOOK_APP_ID=${{ secrets.FACEBOOK_APP_ID }}
+          FACEBOOK_APP_SECRET=${{ secrets.FACEBOOK_APP_SECRET }}
+          DOMAINS_LIST=${{ secrets.DOMAINS_LIST }}
+          SENTRY_DSN=${{ secrets.SENTRY_DSN }}" > .env
 
       - uses: actions/setup-node@v1
       - run: npm i -g serverless
