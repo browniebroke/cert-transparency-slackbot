@@ -28,7 +28,7 @@ jobs:
 
       - uses: actions/setup-node@v2.1.2
       - run: yarn
-      - run: serverless deploy
+      - run: yarn deploy
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
