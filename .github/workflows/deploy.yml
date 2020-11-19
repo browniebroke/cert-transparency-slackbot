@@ -27,7 +27,6 @@ jobs:
           SENTRY_DSN=${{ secrets.SENTRY_DSN }}" > .env
 
       - uses: actions/setup-node@v2.1.2
-      - run: npm i -g serverless
       - run: yarn
       - run: serverless deploy
         env:
