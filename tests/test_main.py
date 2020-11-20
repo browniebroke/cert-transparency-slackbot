@@ -124,7 +124,9 @@ def test_event_empty_body():
 
 @respx.mock
 def test_event_no_certificates():
-    request = respx.get(SEARCH_CERT_URL, params=BASE_SEARCH_PARAMS, json={"data": []})
+    request = respx.get(SEARCH_CERT_URL, params=BASE_SEARCH_PARAMS).respond(
+        json={"data": []}
+    )
     assert event_handler(NOTIFICATION_EVENT, None) == {
         "body": "No cert found",
         "headers": {"Content-Type": "text/plain"},
@@ -144,7 +146,9 @@ def test_event_no_certificates():
 )
 def test_event_matching_result(mocked_slack, issuer_name, expected_name):
     exp_response = {"data": _get_search_data(id_="98467385784", issuer=issuer_name)}
-    request = respx.get(SEARCH_CERT_URL, params=BASE_SEARCH_PARAMS, json=exp_response)
+    request = respx.get(SEARCH_CERT_URL, params=BASE_SEARCH_PARAMS).respond(
+        json=exp_response
+    )
     assert event_handler(NOTIFICATION_EVENT, None) == {
         "body": "Success: received valid cert transparency event",
         "headers": {"Content-Type": "text/plain"},
