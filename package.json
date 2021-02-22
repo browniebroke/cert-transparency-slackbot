@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "serverless": "2.25.2",
-    "serverless-dotenv-plugin": "3.7.2",
+    "serverless-dotenv-plugin": "3.8.0",
     "serverless-python-requirements": "5.1.0"
   }
 }
