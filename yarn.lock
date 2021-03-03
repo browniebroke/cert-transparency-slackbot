@@ -3836,10 +3836,10 @@ serverless-python-requirements@5.1.0:
     sha256-file "1.0.0"
     shell-quote "^1.6.1"
 
-serverless@2.28.4:
-  version "2.28.4"
-  resolved "https://registry.yarnpkg.com/serverless/-/serverless-2.28.4.tgz#d45bfca303c4571e51a4354993975170bfa8f613"
-  integrity sha512-hOryQaadyLH6+WSYk3TFJHVhduGUr9qQ2dXdjr9EK/yhYURg/2JhM/ZGod1evL80FYBGzi1CmpVJxTPqmCaRJA==
+serverless@2.28.5:
+  version "2.28.5"
+  resolved "https://registry.yarnpkg.com/serverless/-/serverless-2.28.5.tgz#cc2812ff499ec6df2e6dba150511d71f1243217d"
+  integrity sha512-vUgZTOPZgaYmP5sixAlb7a02PzTEcHvRUhgY1kNrhn8Ns3psE/mhm8E1ZgOwev2SjhhCPc1P2YtIy1Dg07RDww==
   dependencies:
     "@serverless/cli" "^1.5.2"
     "@serverless/components" "^3.7.2"
