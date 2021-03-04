@@ -14,7 +14,7 @@
     "deploy": "sls deploy"
   },
   "dependencies": {
-    "serverless": "2.28.6",
+    "serverless": "2.28.7",
     "serverless-dotenv-plugin": "3.8.1",
     "serverless-python-requirements": "5.1.0"
   }
