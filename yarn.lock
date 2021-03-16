@@ -1028,10 +1028,10 @@ chownr@^2.0.0:
   resolved "https://registry.yarnpkg.com/chownr/-/chownr-2.0.0.tgz#15bfbe53d2eab4cf70f18a8cd68ebe5b3cb1dece"
   integrity sha512-bIomtDF5KGpdogkLd9VspvFzk9KfpyyGlS8YFVZl7TGPBHL5snIOnxeshwVgPteQ9b4Eydl+pVbIyE1DcvCWgQ==
 
-ci-info@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/ci-info/-/ci-info-2.0.0.tgz#67a9e964be31a51e15e5010d58e6f12834002f46"
-  integrity sha512-5tK7EtrZ0N+OLFMthtqOj4fI2Jeb88C4CAZPu25LDVUgXJ0A3Js4PMGqrn0JU1W0Mh1/Z8wZzYPxqUrXeBboCQ==
+ci-info@^3.1.1:
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/ci-info/-/ci-info-3.1.1.tgz#9a32fcefdf7bcdb6f0a7e1c0f8098ec57897b80a"
+  integrity sha512-kdRWLBIJwdsYJWYJFtAFFYxybguqeF91qpZaggjG5Nf8QKdizFG2hjqvaTXbxFIcYbSaD74KpAXv6BSm17DHEQ==
 
 cli-boxes@^2.2.1:
   version "2.2.1"
@@ -3784,10 +3784,10 @@ serverless-python-requirements@5.1.0:
     sha256-file "1.0.0"
     shell-quote "^1.6.1"
 
-serverless@2.30.0:
-  version "2.30.0"
-  resolved "https://registry.yarnpkg.com/serverless/-/serverless-2.30.0.tgz#9068352ad374b1bb7dca8c1cc54f33fe010f7714"
-  integrity sha512-vWoav1kwgslBD/bMXFVnF2//LN/DbLVwsRjRNlLfnSfyXTW2IJsb0vp7qAVA7i9jpGPxNJlWy24mFuF1dqHepw==
+serverless@2.30.2:
+  version "2.30.2"
+  resolved "https://registry.yarnpkg.com/serverless/-/serverless-2.30.2.tgz#446012bdf450923d3f473fc1f4f2f20fad47dd7c"
+  integrity sha512-sJXQCz9a/BHr53PneoUJLkro5Hk4MQdvPcQ0YKv9LkAR32hfzK5GrjdkA2VtSmsFwe0RCbCkQRemAR6Nyb1ljg==
   dependencies:
     "@serverless/cli" "^1.5.2"
     "@serverless/components" "^3.7.3"
@@ -3802,7 +3802,7 @@ serverless@2.30.0:
     cachedir "^2.3.0"
     chalk "^4.1.0"
     child-process-ext "^2.1.1"
-    ci-info "^2.0.0"
+    ci-info "^3.1.1"
     d "^1.0.1"
     dayjs "^1.10.4"
     decompress "^4.2.1"
