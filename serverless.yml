@@ -1,10 +1,18 @@
 service: serverless-ct-slack-bot
 
+useDotenv: true
+
 provider:
   name: aws
   runtime: python3.8
   profile: ${opt:profile, ''}
   region: ${opt:region, 'eu-west-2'}
+
+  lambdaHashingVersion: 20201221
+
+  # Optional API Gateway global config
+  apiGateway:
+    shouldStartNameWithService: true
 
 functions:
   event:
@@ -18,4 +26,3 @@ functions:
 
 plugins:
   - serverless-python-requirements
-  - serverless-dotenv-plugin
