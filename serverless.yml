@@ -16,6 +16,12 @@ provider:
 
 functions:
   event:
+    environment:
+      SLACK_API_TOKEN: ${env.SLACK_API_TOKEN}
+      SLACK_CHANNEL: ${env.SLACK_CHANNEL}
+      FACEBOOK_APP_ID: ${env.FACEBOOK_APP_ID}
+      FACEBOOK_APP_SECRET: ${env.FACEBOOK_APP_SECRET}
+      DOMAINS_LIST: ${env.DOMAINS_LIST}
     handler: src.main.event_handler
     events:
       - http: POST /
