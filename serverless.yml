@@ -1,6 +1,6 @@
 service: serverless-ct-slack-bot
 
-useDotenv: true
+useDotenv: false
 
 provider:
   name: aws
