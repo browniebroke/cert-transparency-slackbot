@@ -1,12 +1,13 @@
-from src import config, fb
+import sys
+
+from src import fb
 
 
-def subscribe_domains():
+def subscribe_domains(domain):
     fb_client = fb.Client()
-    for domain in config.DOMAINS_LIST:
-        result = fb_client.subscribe(domain)
-        print(f"Subscribed to {domain} = {result['success']}")
+    result = fb_client.subscribe(domain)
+    print(f"Subscribed to {domain} = {result['success']}")
 
 
 if __name__ == "__main__":
-    subscribe_domains()
+    subscribe_domains(sys.argv[1])

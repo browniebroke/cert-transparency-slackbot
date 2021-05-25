@@ -1,0 +1,26 @@
+name: Subscribe domain
+
+on:
+  workflow_dispatch:
+    inputs:
+      domain:
+        description: The domain to register
+        required: true
+
+jobs:
+  labels:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+      - uses: abatilo/actions-poetry@v2.1.0
+      - name: Install Dependencies
+        run: poetry install
+      - name: Subscribe domain
+        run: poetry run python subscribe.py ${{ github.event.inputs.domain }}
+        env:
+          FACEBOOK_APP_ID: ${{ secrets.FACEBOOK_APP_ID }}
+          FACEBOOK_APP_SECRET: ${{ secrets.FACEBOOK_APP_SECRET }}
