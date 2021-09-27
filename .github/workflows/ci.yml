@@ -74,7 +74,7 @@ jobs:
           DOMAINS_LIST=${{ secrets.DOMAINS_LIST }}
           SENTRY_DSN=${{ secrets.SENTRY_DSN }}" > .env
 
-      - uses: actions/setup-node@v2.4.0
+      - uses: actions/setup-node@v2.4.1
       - run: yarn
       - run: yarn deploy
         env:
