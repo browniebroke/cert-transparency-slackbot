@@ -439,14 +439,14 @@ python-versions = "*"
 
 [[package]]
 name = "respx"
-version = "0.17.0"
+version = "0.18.0"
 description = "A utility for mocking out the Python HTTPX and HTTP Core libraries."
 category = "dev"
 optional = false
 python-versions = ">=3.6"
 
 [package.dependencies]
-httpx = ">=0.18.0"
+httpx = ">=0.20.0"
 
 [[package]]
 name = "rfc3986"
@@ -580,7 +580,7 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "e7ae0d84b1af816a5d2b1ea7fdd95fa7f6e6e55529daf152cde0cedb90da0bb6"
+content-hash = "41ccb84e934f2ddbc3fe36315c7f00d836173e512a8372f12d4f88dc5a56bd9a"
 
 [metadata.files]
 aiohttp = [
@@ -869,8 +869,8 @@ regex = [
     {file = "regex-2020.10.23.tar.gz", hash = "sha256:2278453c6a76280b38855a263198961938108ea2333ee145c5168c36b8e2b376"},
 ]
 respx = [
-    {file = "respx-0.17.0-py2.py3-none-any.whl", hash = "sha256:d8630774b447b5ecd7641c8592082fb13e77c97f2857abf732b7ce1b4f26587a"},
-    {file = "respx-0.17.0.tar.gz", hash = "sha256:0c792e2bb5b70deda5f6c1be460c1e524cd6d2eea4240a38e973341c1ea211c3"},
+    {file = "respx-0.18.0-py2.py3-none-any.whl", hash = "sha256:7a128619acff098cd52250dd8e38989aa1f48b560c815d624c0d020189013d9e"},
+    {file = "respx-0.18.0.tar.gz", hash = "sha256:2cfc93648c675500fa8d48ccd215936643c9b3e4348fef5083030bd22b1dbe39"},
 ]
 rfc3986 = [
     {file = "rfc3986-1.5.0-py2.py3-none-any.whl", hash = "sha256:a86d6e1f5b1dc238b218b012df0aa79409667bb209e58da56d0b94704e712a97"},
