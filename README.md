@@ -7,6 +7,9 @@
   <a href="https://codecov.io/gh/browniebroke/cert-transparency-slackbot">
     <img src="https://img.shields.io/codecov/c/github/browniebroke/cert-transparency-slackbot.svg?logo=codecov&style=flat-square" alt="Test coverage percentage">
   </a>
+  <a href="https://results.pre-commit.ci/latest/github/browniebroke/cert-transparency-slackbot/main">
+    <img src="https://results.pre-commit.ci/badge/github/browniebroke/cert-transparency-slackbot/main.svg" alt="pre-commit.ci status">
+  </a>
 </p>
 <p align="center">
   <a href="https://python-poetry.org/">
