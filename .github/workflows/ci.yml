@@ -23,39 +23,12 @@ jobs:
       - name: Upload coverage report
         uses: codecov/codecov-action@v2.1.0
 
-  lint:
-    strategy:
-      fail-fast: false
-      matrix:
-        linter:
-          - name: flake8
-            run: flake8
-          - name: black
-            run: black --check .
-          - name: pyupgrade
-            run: pyupgrade --py38-plus `find . -name "*.py"`
-          - name: isort
-            run: isort -cv .
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Set up Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: 3.8
-      - uses: snok/install-poetry@v1
-      - name: Install Dependencies
-        run: poetry install
-      - name: ${{ matrix.linter.name }}
-        run: poetry run ${{ matrix.linter.run }}
-
   deploy:
     runs-on: ubuntu-latest
     environment: release
     if: github.ref == 'refs/heads/main'
     needs:
       - test
-      - lint
 
     steps:
       - uses: actions/checkout@v2
