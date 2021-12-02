@@ -3988,14 +3988,15 @@ semver@^7.3.5:
   dependencies:
     lru-cache "^6.0.0"
 
-serverless-python-requirements@5.2.0:
-  version "5.2.0"
-  resolved "https://registry.yarnpkg.com/serverless-python-requirements/-/serverless-python-requirements-5.2.0.tgz#2fcd2634de9f45f79465e3f0a6e3e654a5432664"
-  integrity sha512-KHnb7NZM2uhmaO61QTClVHZ/UDs0oQQsNPuOFnx3jxLGCcNjbhR2/XiDyHop+Vm/vwuhYrwRasD/hZ1PbLAlkA==
+serverless-python-requirements@5.2.1:
+  version "5.2.1"
+  resolved "https://registry.yarnpkg.com/serverless-python-requirements/-/serverless-python-requirements-5.2.1.tgz#b07efa258fe9285e9dc2c2af20636d7b8db84a89"
+  integrity sha512-Jp9VTpPbsj+x1slq6W+tPDvvQYVTEFRRvAQNMqQmAS2Liymx2uOlv6VIjQ7drUowoAo6xiChqD06kPt3kTNv+A==
   dependencies:
     "@iarna/toml" "^2.2.5"
     appdirectory "^0.1.0"
     bluebird "^3.7.2"
+    child-process-ext "^2.1.1"
     fs-extra "^9.1.0"
     glob-all "^3.2.1"
     is-wsl "^2.2.0"
