@@ -3943,10 +3943,10 @@ semver@^7.3.5:
   dependencies:
     lru-cache "^6.0.0"
 
-serverless-python-requirements@5.2.2:
-  version "5.2.2"
-  resolved "https://registry.yarnpkg.com/serverless-python-requirements/-/serverless-python-requirements-5.2.2.tgz#78c6b0f59b652b9728610bde55ed7ed90cc63fc2"
-  integrity sha512-nT9kEU4Ge2O+uXpevpP5oGfILaq7U9MoI4sv/2jK/W1Mp35KxDIAc/8/V2+n88PvK+kHWqrGhrKp97d+zh997g==
+serverless-python-requirements@5.3.0:
+  version "5.3.0"
+  resolved "https://registry.yarnpkg.com/serverless-python-requirements/-/serverless-python-requirements-5.3.0.tgz#73209610ef8bec031a5eeea19ab87fa45bb0fdbc"
+  integrity sha512-+oWXQ0aEdUDBFC7bpbKUrp4KesQI4fE6b/A53Oc6PW9mCV38fX+H4yfic3ocl2COkMXwd66cUOr6+iqg/eeoRQ==
   dependencies:
     "@iarna/toml" "^2.2.5"
     appdirectory "^0.1.0"

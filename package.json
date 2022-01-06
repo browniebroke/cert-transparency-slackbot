@@ -15,6 +15,6 @@
   },
   "dependencies": {
     "serverless": "2.70.0",
-    "serverless-python-requirements": "5.2.2"
+    "serverless-python-requirements": "5.3.0"
   }
 }
