@@ -19,7 +19,7 @@ pytest-mock = "^3.3.1"
 pytest-cov = "^3.0.0"
 coverage = "^6.0"
 flake8 = "^4.0.0"
-pyupgrade = "^2.29.1"
+pyupgrade = "^2.31"
 isort = "^5.10.1"
 
 [tool.pytest.ini_options]
