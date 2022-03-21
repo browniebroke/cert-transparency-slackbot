@@ -14,7 +14,7 @@
     "deploy": "sls deploy"
   },
   "dependencies": {
-    "serverless": "3.7.9",
+    "serverless": "3.8.0",
     "serverless-python-requirements": "5.4.0"
   }
 }
