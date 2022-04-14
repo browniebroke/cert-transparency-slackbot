@@ -346,10 +346,10 @@ at-least-node@^1.0.0:
   resolved "https://registry.yarnpkg.com/at-least-node/-/at-least-node-1.0.0.tgz#602cd4b46e844ad4effc92a8011a3c46e0238dc2"
   integrity sha512-+q/t7Ekv1EDY2l6Gda6LLiX14rU9TV20Wa3ofeQmwPFZbOMo9DXrLbOjFaaclkXKWidIaopwAObQDqwWtGUjqg==
 
-aws-sdk@^2.1113.0:
-  version "2.1113.0"
-  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.1113.0.tgz#78ce8b713048f3f72c6c55561cd0d70b4ac71da1"
-  integrity sha512-F+B+HFnKCVIOmErZ1jJ8YL4XxDSaUI9l3JskfpIrk0XdJVcIfyHgA4XUrTUda4z5TOy1Z7eWV2IXgEpVRM4xyw==
+aws-sdk@^2.1114.0:
+  version "2.1115.0"
+  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.1115.0.tgz#a5f9b049c7625755b4922fbbf3f4c6dedc0d8f4e"
+  integrity sha512-WuMPBkE2b0hGRcF4oYw9zhjG0PC20lFKHT5FS8PXgZgu4GK8adQ8oIK0wBYPjq3F6b+VNdhDWSy3R7a6K+ENOQ==
   dependencies:
     buffer "4.9.2"
     events "1.1.1"
@@ -2465,10 +2465,10 @@ serverless-python-requirements@5.4.0:
     sha256-file "1.0.0"
     shell-quote "^1.7.3"
 
-serverless@3.13.0:
-  version "3.13.0"
-  resolved "https://registry.yarnpkg.com/serverless/-/serverless-3.13.0.tgz#b965b700bd17a0d300817c0e6438cc5e2ad45954"
-  integrity sha512-IICXx9c2jAZzE+tPiO5E/DZ6J7Lglhg8PkeeYbYNozNtlzPl9rNUoeSyKkWVrZtt7DG+iQZtBaJtu8e/Y2vB2w==
+serverless@3.14.0:
+  version "3.14.0"
+  resolved "https://registry.yarnpkg.com/serverless/-/serverless-3.14.0.tgz#c530b47e11f811b5e500402f5f7d9be1ab69f53f"
+  integrity sha512-+8B26dyIfsQ9QqDubKJhVRbSjcg0qJNWlFU/fdHYoLn/nUO4u1u+4AYdnUSiku8bDyrdaAjFJp9Zk3cwPCsm9A==
   dependencies:
     "@serverless/dashboard-plugin" "^6.2.1"
     "@serverless/platform-client" "^4.3.2"
@@ -2476,7 +2476,7 @@ serverless@3.13.0:
     ajv "^8.11.0"
     ajv-formats "^2.1.1"
     archiver "^5.3.0"
-    aws-sdk "^2.1113.0"
+    aws-sdk "^2.1114.0"
     bluebird "^3.7.2"
     cachedir "^2.3.0"
     chalk "^4.1.2"
