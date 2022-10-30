@@ -8,8 +8,6 @@ provider:
   profile: ${opt:profile, ''}
   region: ${opt:region, 'eu-west-2'}
 
-  lambdaHashingVersion: 20201221
-
   # Optional API Gateway global config
   apiGateway:
     shouldStartNameWithService: true
