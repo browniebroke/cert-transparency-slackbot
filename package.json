@@ -11,7 +11,8 @@
     "slack"
   ],
   "scripts": {
-    "deploy": "sls deploy"
+    "deploy": "sls deploy",
+    "postdeploy": "sls doctor"
   },
   "dependencies": {
     "serverless": "3.22.0",
