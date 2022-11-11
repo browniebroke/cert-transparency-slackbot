@@ -41,13 +41,12 @@ jobs:
       - name: Write .env file
         run: |
           echo "SLACK_API_TOKEN=${{ secrets.SLACK_API_TOKEN }}
-          SLACK_CHANNEL=${{ secrets.SLACK_CHANNEL }}
+          SLACK_CHANNEL='${{ secrets.SLACK_CHANNEL }}'
           FACEBOOK_APP_ID=${{ secrets.FACEBOOK_APP_ID }}
           FACEBOOK_APP_SECRET=${{ secrets.FACEBOOK_APP_SECRET }}
           DOMAINS_LIST=${{ secrets.DOMAINS_LIST }}
           SENTRY_DSN=${{ secrets.SENTRY_DSN }}" > .env
 
-      - run: cat .env | grep SLACK_CHANNEL
       - uses: actions/setup-node@v3
       - run: yarn
       - run: yarn deploy
