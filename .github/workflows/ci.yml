@@ -47,7 +47,7 @@ jobs:
           DOMAINS_LIST=${{ secrets.DOMAINS_LIST }}
           SENTRY_DSN=${{ secrets.SENTRY_DSN }}" > .env
 
-      - run: echo "Slack channel = ${{ secrets.SLACK_CHANNEL }}"
+      - run: cat .env | grep SLACK_CHANNEL
       - uses: actions/setup-node@v3
       - run: yarn
       - run: yarn deploy
