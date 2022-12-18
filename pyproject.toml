@@ -16,7 +16,7 @@ pytest = "^7.0"
 respx = "^0.20.0"
 pytest-mock = "^3.3"
 pytest-cov = "^4.0"
-coverage = "^6.0"
+coverage = "^7.0"
 
 [tool.pytest.ini_options]
 addopts = "-Wdefault --cov=src"
