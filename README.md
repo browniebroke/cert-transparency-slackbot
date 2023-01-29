@@ -1,8 +1,8 @@
 # Certificate Transparency Slackbot
 
 <p align="center">
-  <a href="https://github.com/browniebroke/cert-transparency-slackbot/actions?query=workflow%3ACI">
-    <img alt="CI Status" src="https://img.shields.io/github/workflow/status/browniebroke/cert-transparency-slackbot/CI?label=CI&logo=github&style=flat-square">
+  <a href="https://github.com/browniebroke/cert-transparency-slackbot/actions/workflows/ci.yml?query=branch%3Amain">
+    <img alt="CI Status" src="https://img.shields.io/github/actions/workflow/status/browniebroke/cert-transparency-slackbot/ci.yml?branch=main&label=CI&logo=github&style=flat-square">
   </a>
   <a href="https://codecov.io/gh/browniebroke/cert-transparency-slackbot">
     <img src="https://img.shields.io/codecov/c/github/browniebroke/cert-transparency-slackbot.svg?logo=codecov&style=flat-square" alt="Test coverage percentage">
