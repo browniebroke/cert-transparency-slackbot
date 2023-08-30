@@ -4,6 +4,8 @@ from . import config
 
 
 class Client:
+    """API client for the facebook API."""
+
     def __init__(self):
         self.cli = httpx.Client(base_url="https://graph.facebook.com/v8.0")
         # noinspection HardcodedPassword
@@ -15,6 +17,7 @@ class Client:
         return response.json()
 
     def search_logs(self, query: str):
+        """Search the certificate transparency logs for the given query."""
         has_next = True
         params = {
             "access_token": self.token,
@@ -30,6 +33,7 @@ class Client:
             )
 
     def subscribe(self, domain: str):
+        """Subscribe a new domain."""
         return self._request(
             "POST",
             f"/{config.FACEBOOK_APP_ID}/subscribed_domains",
@@ -40,6 +44,7 @@ class Client:
         )
 
     def get_subscribed(self):
+        """List all subscribed domains."""
         return self._request(
             "GET",
             f"/{config.FACEBOOK_APP_ID}/subscribed_domains",

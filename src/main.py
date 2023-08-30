@@ -19,6 +19,7 @@ sentry_cli = sentry_sdk.init(config.SENTRY_DSN)
 
 
 def event_handler(event, context):
+    """Entry point for handling certificate transparency events."""
     logging.info("Event handler: event=%r -- context=%r", event, context)
     event_body = event["body"]
     if not event_body:
@@ -46,6 +47,7 @@ def event_handler(event, context):
 
 
 def verify_handler(event, context):
+    """Entry point to handle verification events."""
     logging.info("Verify handler: event=%r -- context=%r", event, context)
     query_params = event["queryStringParameters"]
     if query_params is None:
