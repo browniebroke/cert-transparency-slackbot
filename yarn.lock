@@ -3822,10 +3822,10 @@ serverless-python-requirements@6.0.0:
     sha256-file "1.0.0"
     shell-quote "^1.7.4"
 
-serverless@3.35.0:
-  version "3.35.0"
-  resolved "https://registry.yarnpkg.com/serverless/-/serverless-3.35.0.tgz#a7c9f375625601253c8bc3e88e1ac20e30d518f2"
-  integrity sha512-Hd8nvJVyx7qq/sTde5bNW7IofAbwkKYKviqulfbmhqhV3kchL2HO7J1dBSwMZY2abHguIuNYofUAdDceYB+2Qw==
+serverless@3.35.1:
+  version "3.35.1"
+  resolved "https://registry.yarnpkg.com/serverless/-/serverless-3.35.1.tgz#12f0e7194090f3568d8f4ed0bb6b8cd401fcf5e3"
+  integrity sha512-NwtfrGv6bmERYoQEfipQzI0v+XRZ5vIrenQnz3Lqludb8/8ieNhopVcMsxXX/JN7AzNK+LxNR3rsZ2U+rCTKqg==
   dependencies:
     "@serverless/dashboard-plugin" "^7.0.1"
     "@serverless/platform-client" "^4.4.0"
