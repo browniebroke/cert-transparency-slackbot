@@ -1,4 +1,5 @@
 """Subscribe a new domain from the command line."""
+
 import sys
 
 from src import fb
