@@ -36,12 +36,12 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-
+      - name: Install poetry
+        run: pipx install poetry
       - uses: actions/setup-python@v5
         with:
           cache: poetry
           python-version: 3.8
-
       - name: Write .env file
         run: |
           echo "SLACK_API_TOKEN=${{ secrets.SLACK_API_TOKEN }}
