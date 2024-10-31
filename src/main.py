@@ -1,6 +1,6 @@
 import json
 import logging
-from typing import Any, Dict
+from typing import Any
 
 import sentry_sdk
 from slack import WebClient
@@ -60,7 +60,7 @@ def verify_handler(event, context):
     return _make_response(hub_challenge)
 
 
-def _make_response(content: str, status_code: int = 200) -> Dict[str, Any]:
+def _make_response(content: str, status_code: int = 200) -> dict[str, Any]:
     return {
         "statusCode": status_code,
         "headers": {"Content-Type": "text/plain"},
@@ -68,7 +68,7 @@ def _make_response(content: str, status_code: int = 200) -> Dict[str, Any]:
     }
 
 
-def _handle_cert_event(event_entry: Dict) -> bool:
+def _handle_cert_event(event_entry: dict) -> bool:
     logger.info("Received valid cert transparency event: %r", event_entry)
     log_entry = _find_log_entry(event_entry["id"])
     if log_entry:
@@ -92,7 +92,7 @@ def _clean_name(issuer_name: str) -> str:
     return issuer_infos["CN"]
 
 
-def _find_log_entry(object_id: str) -> Dict[str, Any]:
+def _find_log_entry(object_id: str) -> dict[str, Any]:
     fb_client = fb.Client()
     logger.info("Searching log entry with ID: %s", object_id)
     for domain in config.DOMAINS_LIST:
