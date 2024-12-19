@@ -16,7 +16,7 @@ classifiers = [
 ]
 dependencies = [
   "environs>=11,<12",
-  "httpx>=0.27,<0.28",
+  "httpx>=0.28,<0.29",
   "sentry-sdk>=2,<3",
   "slackclient>=2.9,<3",
 ]
