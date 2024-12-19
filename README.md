@@ -12,8 +12,8 @@
   </a>
 </p>
 <p align="center">
-  <a href="https://python-poetry.org/">
-    <img src="https://img.shields.io/endpoint?url=https://python-poetry.org/badge/v0.json" alt="Poetry Badge">
+  <a href="https://github.com/astral-sh/uv">
+    <img src="https://img.shields.io/endpoint?url=https://github.com/astral-sh/uvbadge/v0.json" alt="Poetry Badge">
   </a>
   <a href="https://github.com/astral-sh/ruff">
     <img src="https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json" alt="Ruff">
@@ -105,7 +105,7 @@ This should print out the domains in your `.env` file as they are registered.
 
 To get error reports in Sentry, set the environment variable `SENTRY_DSN` [to the URL][sentry-dsn] that should be passed to `sentry_sdk.init`, it should be something like: `https://xxxxxx@yyy.ingest.sentry.io/ddddd`.
 
-[poetry]: https://python-poetry.org/
+[poetry]: https://github.com/astral-sh/uv
 [fb-ct-webhook]: https://developers.facebook.com/docs/certificate-transparency/#certificate-alerts
 [sls-home]: https://www.serverless.com/
 [fb-apps]: https://developers.facebook.com/apps/
