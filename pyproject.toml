@@ -3,7 +3,7 @@ name = "cert-transparency-slack"
 version = "0.1.0"
 description = ""
 authors = [
-  { name = "Bruno Alla", email = "bruno.alla@festicket.com" },
+  { name = "Bruno Alla", email = "alla.brunoo@gmail.com" },
 ]
 requires-python = ">=3.9"
 classifiers = [
@@ -16,7 +16,7 @@ classifiers = [
 ]
 dependencies = [
   "environs>=11,<12",
-  "httpx>=0.27,<1",
+  "httpx>=0.27,<0.28",
   "sentry-sdk>=2,<3",
   "slackclient>=2.9,<3",
 ]
@@ -29,20 +29,6 @@ dev = [
   "pytest-mock>=3.3,<4",
   "respx>=0.21,<1",
 ]
-
-[tool.poetry.dependencies]
-python = "^3.9"
-httpx = "^0.27.0"
-slackclient = "^2.9"
-environs = "^11.0.0"
-sentry-sdk = "^2.0.0"
-
-[tool.poetry.group.dev.dependencies]
-pytest = "^8.0.0"
-respx = "^0.21.0"
-pytest-mock = "^3.3"
-pytest-cov = "^6.0.0"
-coverage = "^7.0"
 
 [tool.ruff]
 target-version = "py39"
