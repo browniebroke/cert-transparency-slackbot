@@ -45,7 +45,7 @@ These are the steps to get this serverless application deployed:
 
 You should clone this repo and copy the `.env.example` as `.env`. This file is where you should keep your secrets, outside of source control.
 
-Run `yarn install` to install all the [serverless framework][sls-home] dependencies. You'll need to have [Poetry] installed, check out their installation instructions if you don't have it. Then run `poetry install`.
+Run `yarn install` to install all the [serverless framework][sls-home] dependencies. You'll need to have [uv] installed, check out their installation instructions if you don't have it. Then run `uv sync`.
 
 ### Set up Slack
 
@@ -105,7 +105,7 @@ This should print out the domains in your `.env` file as they are registered.
 
 To get error reports in Sentry, set the environment variable `SENTRY_DSN` [to the URL][sentry-dsn] that should be passed to `sentry_sdk.init`, it should be something like: `https://xxxxxx@yyy.ingest.sentry.io/ddddd`.
 
-[poetry]: https://github.com/astral-sh/uv
+[uv]: https://github.com/astral-sh/uv
 [fb-ct-webhook]: https://developers.facebook.com/docs/certificate-transparency/#certificate-alerts
 [sls-home]: https://www.serverless.com/
 [fb-apps]: https://developers.facebook.com/apps/
