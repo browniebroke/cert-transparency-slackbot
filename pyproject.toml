@@ -16,7 +16,7 @@ classifiers = [
 ]
 dependencies = [
   "environs>=12,<13",
-  "httpx>=0.27,<0.28",
+  "httpx>=0.28,<0.29",
   "sentry-sdk>=2,<3",
   "slackclient>=2.9,<3",
 ]
@@ -27,7 +27,7 @@ dev = [
   "pytest>=8,<9",
   "pytest-cov>=6,<7",
   "pytest-mock>=3.3,<4",
-  "respx>=0.21,<1",
+  "respx>=0.22,<1",
 ]
 
 [tool.ruff]
