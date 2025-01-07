@@ -27,7 +27,7 @@ dev = [
   "pytest>=8,<9",
   "pytest-cov>=6,<7",
   "pytest-mock>=3.3,<4",
-  "respx>=0.21,<1",
+  "respx>=0.22,<1",
 ]
 
 [tool.ruff]
