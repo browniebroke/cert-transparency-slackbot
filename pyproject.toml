@@ -15,7 +15,7 @@ classifiers = [
   "Programming Language :: Python :: 3.13",
 ]
 dependencies = [
-  "environs>=12,<13",
+  "environs>=14,<15",
   "httpx>=0.28,<0.29",
   "sentry-sdk>=2,<3",
   "slackclient>=2.9,<3",
